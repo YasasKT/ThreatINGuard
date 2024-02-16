@@ -45,5 +45,5 @@ def preprocess_data(events):
 def transmit_processed_data():
     events = monitor_file_events()
     processed_data = preprocess_data(events)
-    socketio.emit('file_events_data', processed_data.to_dict(orient='records'))
+    socketio.emit('preprocessed_file_events_data', processed_data.to_dict(orient='records'))
 

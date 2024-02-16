@@ -46,4 +46,4 @@ def preprocess_data(events):
 def transmit_processed_data():
     events = monitor_login_logout_events()
     processed_data = preprocess_data(events)
-    socketio.emit('login_logout_data', processed_data.to_dict(orient='records'))
+    socketio.emit('preprocessed_login_logout_data', processed_data.to_dict(orient='records'))

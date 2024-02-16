@@ -4,6 +4,7 @@ import wmi
 import datetime
 import threading
 
+
 def get_file_permissions():
     previous_permissions = {}
 
@@ -11,7 +12,6 @@ def get_file_permissions():
         for path in "C:":
             current_permissions = psutil.disk_usage(path).st_mode
             if path not in previous_permissions or current_permissions != previous_permissions[path]:
-
                 file_event = {
                     "timestamp": datetime.datetime.now(),
                     "path": path,
@@ -37,6 +37,8 @@ def get_file_audit_logs():
 
 
 socketio.on('collect_file_data')
+
+
 def handle_file_data():
     thread = threading.Thread(target=get_file_permissions)
     thread.start()
@@ -46,4 +48,4 @@ def handle_file_data():
         "file_permission_events": [],
         "file_audit_logs": file_audit_logs
     }
-    socketio.emit('file_data_update', processed_data)
+    socketio.emit('preprocessed_file_data_update', processed_data)
