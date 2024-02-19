@@ -7,7 +7,11 @@ const Dashboard = () => {
     return (
         <div className='dashboard-container'>
             <Navigation />
-            <SearchBar />
+            <div className='grey-back'>
+                <div className='search-container'>
+                    <SearchBar />
+                </div>
+            </div>
         </div>
     );
 };
